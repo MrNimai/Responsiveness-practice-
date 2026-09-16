@@ -1,123 +1,365 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive-Practice</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sansita+Swashed:wght@300..900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>Fawzi Sayed - UI & UX Designer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#FD6F00',
+                        dark: '#1E1E1E',
+                        lightbg: '#F8F8F8',
+                        graytext: '#797979'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom range slider thumb styling to match design */
+        input[type=range] {
+            -webkit-appearance: none; 
+            appearance: none;
+            width: 100%; 
+            background: transparent; 
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 3px solid #FD6F00;
+            cursor: pointer;
+            margin-top: -6px; 
+            box-shadow: 0 0 2px rgba(0,0,0,0.2);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            background: #EDECEC;
+            border-radius: 4px;
+        }
+        /* Style for the filled part (requires JS for dynamic update, using a static visual hack here for HTML/CSS only) */
+        .range-wrap {
+            position: relative;
+            width: 100%;
+        }
+        .range-fill {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            height: 8px;
+            background-color: #FD6F00;
+            border-radius: 4px;
+            z-index: 0;
+            pointer-events: none;
+        }
+        input[type=range] {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
 </head>
+<body class="font-sans text-dark overflow-x-hidden selection:bg-primary selection:text-white">
 
-<body style="font-family: 'Poppins', sans-serif" ;">
+    <!-- Navbar -->
+    <header class="container mx-auto px-6 py-8 flex justify-between items-center max-w-7xl">
+        <a href="#" class="text-3xl font-bold tracking-tight">
+            <span class="text-dark">FAWZI</span><span class="text-gray-500 font-normal">UIUX</span>
+        </a>
+        
+        <nav class="hidden md:flex space-x-8 items-center text-sm font-medium">
+            <a href="#" class="text-primary">Home</a>
+            <a href="#" class="hover:text-primary transition-colors">About Me</a>
+            <a href="#" class="hover:text-primary transition-colors">Services</a>
+            <a href="#" class="hover:text-primary transition-colors">Projects</a>
+            <a href="#" class="hover:text-primary transition-colors">Testimonials</a>
+            <a href="#" class="hover:text-primary transition-colors">Contact</a>
+            <a href="#" class="bg-primary text-white px-6 py-2.5 rounded-md hover:bg-orange-600 transition-colors">Download CV</a>
+        </nav>
+        
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden text-2xl text-dark">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
 
-    <nav>
+    <!-- Hero Section -->
+    <section class="container mx-auto px-6 py-16 md:py-24 max-w-7xl">
+        <div class="flex flex-col-reverse md:flex-row items-center gap-12">
+            
+            <div class="w-full md:w-1/2 flex flex-col items-start text-center md:text-left">
+                <span class="text-xl font-semibold mb-2">Hi I am</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-2">Fawzi Sayed</h2>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">UI & UX <br> <span class="text-right block md:inline md:ml-12">Designer</span></h1>
+                <p class="text-graytext mb-8 max-w-md">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tristique amet sed massa nibh lectus netus in. Aliquet donec morbi convallis pretium.</p>
+                <a href="#" class="bg-primary text-white px-8 py-3 rounded-md hover:bg-orange-600 transition-colors text-sm font-medium">Hire Me</a>
+            </div>
 
-        <div class="logo">
-            <img src="RESOURCES/logo.png" alt="">
+            <div class="w-full md:w-1/2 flex flex-col items-center">
+                <div class="relative w-72 h-72 md:w-96 md:h-96">
+                    <img src="https://i.pravatar.cc/500?img=11" alt="Fawzi Sayed" class="rounded-full w-full h-full object-cover border-4 border-gray-100 shadow-xl z-10 relative">
+                    <!-- Decor element -->
+                    <div class="absolute top-4 right-12 w-full h-full bg-transparent border-[8px] border-primary rounded-full -z-10 opacity-30"></div>
+                </div>
+                <!-- Social Icons -->
+                <div class="flex gap-4 mt-8">
+                    <a href="#" class="text-dark hover:text-primary transition-colors text-xl"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-dark hover:text-primary transition-colors text-xl"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-dark hover:text-primary transition-colors text-xl"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-dark hover:text-primary transition-colors text-xl"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+
         </div>
+    </section>
 
-        <button class="menu-btn" id="menuBtn">☰</button>
-
-        <ul id="navLinks">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="">Projects</a></li>
-            <li><a href="">Testimonials</a></li>
-            <li><a href="">Contact</a></li>
-            <li><a href=""><button>Download CV</button></a></li>
-        </ul>
-
-    </nav>
-
-    <main>
-        <section class="hero" id="hero">
-            <div class="hero-text">
-                <p id="hero-greeting">Hi I am</p>
-
-                <p id="hero-name">Fawzi Sayed</p>
-
-                <p id="hero-title-ui">UI & UX</p>
-
-                <p id="hero-title-designer">Designer</p>
-
-                <p id="hero-description">
-                    Lorem ipsum dolor sit amet consectetur.
-                    Tristique amet sed <br>
-                    massa nibh lectus netus in. Aliquet donec morbi convallis <br>
-                    pretium.
-                    Turpis tempus pharetra
-                </p>
-
-                <button id="download-cv">Download CV</button>
+    <!-- About Me Section -->
+    <section class="container mx-auto px-6 py-20 max-w-7xl">
+        <div class="flex flex-col md:flex-row items-center gap-16">
+            
+            <div class="w-full md:w-1/2 flex justify-center">
+                <div class="relative w-72 h-72 md:w-96 md:h-96">
+                    <div class="absolute -top-4 -left-4 w-full h-full bg-primary rounded-full z-0 opacity-20"></div>
+                    <img src="https://i.pravatar.cc/500?img=12" alt="Fawzi Sayed - About" class="rounded-full w-full h-full object-cover z-10 relative">
+                </div>
             </div>
-            <div class="hero-img">
-                <img src="RESOURCES/Group 2.png" alt="">
-            </div>
-        </section>
 
-        <section class="about" id="about">
-            <div class="about-img">
-                <img src="RESOURCES/Group 7.png" alt="">
-            </div>
-            <div class="about-text">
-                <p class="about-title">About Me</p>
-                <p class="about-description">
-                    Lorem ipsum dolor sit amet consectetur. Tristique amet sed massa nibh lectus netus in. Aliquet donec
-                    morbi convallis pretium. Turpis tempus pharetra
-                </p>
-                <img src="RESOURCES/Group 10.png" alt="">
-            </div>
-        </section>
-
-        <section class="services" id="services" >
-            <div class="services-title">
-                <p class="services-title-text">Services</p>
-                <p class="services-title-description">Lorem ipsum dolor sit amet consectetur. Tristique amet sed massa nibh lectus <br> netus in. Aliquet donec morbi convallis pretium</p>
-            </div>
-            <div class="service-box-container">
-                <div class="service-box-1">
-                    <img src="RESOURCES/Vector-3.png" alt="">
-                    <div class="box-text">
-                        <div class="box-title">UI/UX</div>
-                            <div class="box-description">Lorem ipsum dolor sit amet consectetur. Morbi diam nisi nam diam interdum</div>
+            <div class="w-full md:w-1/2">
+                <h2 class="text-4xl font-bold mb-6">About Me</h2>
+                <p class="text-graytext mb-8 text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tristique amet sed massa nibh lectus netus in. Aliquet donec morbi convallis pretium. Turpis imperdiet arcu.</p>
+                
+                <!-- Skill Bars -->
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="font-bold text-sm mb-3">UX</h4>
+                        <div class="range-wrap relative py-2">
+                            <div class="range-fill" style="width: 90%;"></div>
+                            <input type="range" min="0" max="100" value="90">
                         </div>
                     </div>
-                    <div class="service-box-2"> 
-                        <img src="RESOURCES/Layer_1.png" alt="">
-                        <div class="box-text">
-                            <div class="box-title">Web Design</div>
-                            <div class="box-description">Lorem ipsum dolor sit amet consectetur. Morbi diam nisi nam diam interdum</div>
+                    <div>
+                        <h4 class="font-bold text-sm mb-3">Website Design</h4>
+                        <div class="range-wrap relative py-2">
+                            <div class="range-fill" style="width: 85%;"></div>
+                            <input type="range" min="0" max="100" value="85">
                         </div>
                     </div>
-                    <div class="service-box-3"> 
-                        <img src="RESOURCES/Group 18.png" alt="">
-                        <div class="box-text">
-                            <div class="box-title">App Design</div>
-                            <div class="box-description">Lorem ipsum dolor sit amet consectetur. Morbi diam nisi nam diam interdum</div>
+                    <div>
+                        <h4 class="font-bold text-sm mb-3">App Design</h4>
+                        <div class="range-wrap relative py-2">
+                            <div class="range-fill" style="width: 95%;"></div>
+                            <input type="range" min="0" max="100" value="95">
                         </div>
                     </div>
-                    <div class="service-box-4"> 
-                        <img src="RESOURCES/Vector-2.png" alt="">
-                        <div class="box-text">
-                            <div class="box-title">Graphic Design </div>
-                            <div class="box-description">Lorem ipsum dolor sit amet consectetur. Morbi diam nisi nam diam interdum</div>
+                    <div>
+                        <h4 class="font-bold text-sm mb-3">Graphic Design</h4>
+                        <div class="range-wrap relative py-2">
+                            <div class="range-fill" style="width: 90%;"></div>
+                            <input type="range" min="0" max="100" value="90">
                         </div>
                     </div>
                 </div>
-          
-        </section>
-    </main>
+            </div>
+            
+        </div>
+    </section>
 
+    <!-- Services Section -->
+    <section class="container mx-auto px-6 py-20 max-w-7xl">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold mb-4">Services</h2>
+            <p class="text-graytext text-sm max-w-2xl mx-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tristique amet sed massa nibh lectus netus in. Aliquet donec morbi convallis pretium.</p>
+        </div>
 
-    <script src="script.js"></script>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Service Card 1 -->
+            <div class="bg-lightbg p-8 rounded-xl hover:shadow-lg transition-shadow border border-gray-100">
+                <div class="w-12 h-12 mb-6 text-primary text-3xl">
+                    <i class="fas fa-mobile-alt"></i> <!-- Placeholder icon -->
+                </div>
+                <h3 class="text-xl font-bold mb-4">UI/UX</h3>
+                <p class="text-xs text-graytext leading-loose">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi diam nisl, nam et est bibendum.</p>
+            </div>
+            <!-- Service Card 2 -->
+            <div class="bg-lightbg p-8 rounded-xl hover:shadow-lg transition-shadow border border-gray-100">
+                <div class="w-12 h-12 mb-6 text-primary text-3xl">
+                    <i class="fas fa-desktop"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">Web Design</h3>
+                <p class="text-xs text-graytext leading-loose">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi diam nisl, nam et est bibendum.</p>
+            </div>
+            <!-- Service Card 3 -->
+            <div class="bg-lightbg p-8 rounded-xl hover:shadow-lg transition-shadow border border-gray-100">
+                <div class="w-12 h-12 mb-6 text-primary text-3xl">
+                    <i class="fas fa-layer-group"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">App Design</h3>
+                <p class="text-xs text-graytext leading-loose">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi diam nisl, nam et est bibendum.</p>
+            </div>
+            <!-- Service Card 4 -->
+            <div class="bg-lightbg p-8 rounded-xl hover:shadow-lg transition-shadow border border-gray-100">
+                <div class="w-12 h-12 mb-6 text-primary text-3xl">
+                    <i class="fas fa-vector-square"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">Graphic Design</h3>
+                <p class="text-xs text-graytext leading-loose">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi diam nisl, nam et est bibendum.</p>
+            </div>
+        </div>
+    </section>
 
+    <!-- My Projects Section -->
+    <section class="container mx-auto px-6 py-20 max-w-7xl">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold mb-4">My Projects</h2>
+            <p class="text-graytext text-sm max-w-2xl mx-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tristique amet sed massa nibh lectus netus in. Aliquet donec morbi convallis pretium.</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <button class="px-6 py-2 rounded-md border border-gray-200 text-sm hover:bg-gray-50 transition-colors">All</button>
+            <button class="px-6 py-2 rounded-md border border-gray-200 text-sm hover:bg-gray-50 transition-colors">UI/UX</button>
+            <button class="px-6 py-2 rounded-md bg-primary text-white text-sm">Web Design</button>
+            <button class="px-6 py-2 rounded-md border border-gray-200 text-sm hover:bg-gray-50 transition-colors">App Design</button>
+            <button class="px-6 py-2 rounded-md border border-gray-200 text-sm hover:bg-gray-50 transition-colors">Graphic Design</button>
+        </div>
+
+        <!-- Project Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project 1 -->
+            <div class="group cursor-pointer">
+                <div class="bg-[#FFEBDB] rounded-xl mb-4 overflow-hidden h-72 flex items-center justify-center p-6 relative">
+                    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80" alt="AirCalling Landing Page" class="w-full h-full object-cover rounded shadow-lg group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <h4 class="text-primary text-xs font-semibold mb-1">Web Design</h4>
+                <h3 class="font-bold text-lg">AirCalling Landing Page Design</h3>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="group cursor-pointer">
+                <div class="bg-[#FFEBDB] rounded-xl mb-4 overflow-hidden h-72 flex items-center justify-center p-6 relative">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Business Landing Page" class="w-full h-full object-cover rounded shadow-lg group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <h4 class="text-primary text-xs font-semibold mb-1">Web Design</h4>
+                <h3 class="font-bold text-lg">Business Landing Page Design</h3>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="group cursor-pointer">
+                <div class="bg-[#FFEBDB] rounded-xl mb-4 overflow-hidden h-72 flex items-center justify-center p-6 relative">
+                    <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=600&q=80" alt="Ecom Web Page Design" class="w-full h-full object-cover rounded shadow-lg group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <h4 class="text-primary text-xs font-semibold mb-1">Web Design</h4>
+                <h3 class="font-bold text-lg">Ecom Web Page Design</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="container mx-auto px-6 py-20 max-w-7xl">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold mb-4">Testimonials</h2>
+            <p class="text-graytext text-sm max-w-2xl mx-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tristique amet sed massa nibh lectus netus in. Aliquet donec morbi convallis pretium.</p>
+        </div>
+
+        <div class="flex items-center justify-center gap-4 md:gap-8 max-w-5xl mx-auto">
+            <!-- Left blurred visual -->
+            <div class="hidden md:block w-1/4 opacity-30">
+                <div class="flex items-center gap-4">
+                    <img src="https://i.pravatar.cc/150?img=1" class="w-20 h-20 rounded-full grayscale" alt="User">
+                    <div><div class="h-2 w-24 bg-gray-300 rounded mb-2"></div><div class="h-2 w-16 bg-gray-300 rounded"></div></div>
+                </div>
+            </div>
+
+            <!-- Center Active Testimonial -->
+            <div class="w-full md:w-2/4 bg-lightbg p-8 md:p-12 rounded-xl text-center relative shadow-sm">
+                <!-- Quote marks decorator -->
+                <div class="absolute top-8 left-8 text-primary opacity-20 text-4xl font-serif">"</div>
+                
+                <div class="flex flex-col md:flex-row items-center gap-8 text-left relative z-10">
+                    <img src="https://i.pravatar.cc/150?img=11" alt="Client" class="w-24 h-24 rounded-full object-cover shadow-md">
+                    <div>
+                        <p class="text-graytext text-sm italic mb-4 leading-relaxed">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius quam et orci malesuada, eget luctus enim iaculis. Fusce elementum nulla euismod magna aliquam imperdiet."</p>
+                        <h4 class="font-bold text-lg">Name</h4>
+                        <span class="text-xs text-graytext">CEO</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right blurred visual -->
+            <div class="hidden md:block w-1/4 opacity-30">
+                <div class="flex items-center gap-4">
+                    <img src="https://i.pravatar.cc/150?img=5" class="w-20 h-20 rounded-full grayscale" alt="User">
+                </div>
+            </div>
+        </div>
+
+        <!-- Carousel Dots -->
+        <div class="flex justify-center gap-2 mt-10">
+            <div class="w-3 h-3 rounded-full bg-gray-300 cursor-pointer hover:bg-primary transition-colors"></div>
+            <div class="w-8 h-3 rounded-full bg-primary cursor-pointer"></div> <!-- Active -->
+            <div class="w-3 h-3 rounded-full bg-gray-300 cursor-pointer hover:bg-primary transition-colors"></div>
+            <div class="w-3 h-3 rounded-full bg-gray-300 cursor-pointer hover:bg-primary transition-colors"></div>
+        </div>
+    </section>
+
+    <!-- Let's Design Together Section -->
+    <section class="container mx-auto px-6 py-24 max-w-7xl">
+        <div class="text-center mb-10">
+            <h2 class="text-4xl font-bold mb-4">Lets Design Together</h2>
+            <p class="text-graytext text-sm max-w-2xl mx-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tristique amet sed massa nibh lectus netus in. Aliquet donec morbi convallis pretium.</p>
+        </div>
+
+        <form class="max-w-2xl mx-auto flex flex-col sm:flex-row gap-4 justify-center">
+            <input type="email" placeholder="Enter Your Email" class="w-full sm:w-2/3 px-6 py-3 bg-lightbg border border-gray-200 rounded-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors">
+            <button type="submit" class="w-full sm:w-auto px-8 py-3 bg-primary text-white font-medium rounded-md hover:bg-orange-600 transition-colors">Contact Me</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-lightbg pt-20 pb-6 text-center">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <!-- Logo -->
+            <a href="#" class="inline-block text-3xl font-bold tracking-tight mb-10">
+                <span class="text-dark">FAWZI</span><span class="text-gray-500 font-normal">UIUX</span>
+            </a>
+            
+            <!-- Nav Links -->
+            <nav class="flex flex-wrap justify-center gap-8 mb-10 text-sm font-medium">
+                <a href="#" class="hover:text-primary transition-colors">Home</a>
+                <a href="#" class="hover:text-primary transition-colors">About Me</a>
+                <a href="#" class="hover:text-primary transition-colors">Services</a>
+                <a href="#" class="hover:text-primary transition-colors">Projects</a>
+                <a href="#" class="hover:text-primary transition-colors">Testimonials</a>
+                <a href="#" class="hover:text-primary transition-colors">Contact</a>
+            </nav>
+            
+            <!-- Social Icons -->
+            <div class="flex justify-center gap-6 mb-16">
+                <a href="#" class="text-dark hover:text-primary transition-colors text-xl"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-dark hover:text-primary transition-colors text-xl"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-dark hover:text-primary transition-colors text-xl"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-dark hover:text-primary transition-colors text-xl"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+
+        <!-- Copyright Bar -->
+        <div class="bg-[#1A1A1A] py-4 mt-8">
+            <p class="text-gray-400 text-sm">© 2023 <span class="text-primary font-semibold">FawziUiUx</span> All Rights Reserved, Inc.</p>
+        </div>
+    </footer>
 
 </body>
-
 </html>
